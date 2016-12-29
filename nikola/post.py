@@ -681,13 +681,13 @@ class Post(object):
                     data = lxml.html.tostring(document.body, encoding='unicode')
                 except IndexError:
                     data = lxml.html.tostring(document, encoding='unicode')
-
+        strip_html = True
         if data and strip_html:
             try:
                 # Not all posts have a body. For example, you may have a page statically defined in the template that does not take content as input.
                 content = lxml.html.fromstring(data)
                 data = content.text_content().strip()  # No whitespace wanted.
-            except lxml.etree.ParserError:
+            except (lxml.etree.ParserError, ValueError):
                 data = ""
         elif data:
             if self.demote_headers:
