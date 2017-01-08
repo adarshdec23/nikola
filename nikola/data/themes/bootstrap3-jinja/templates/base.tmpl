@@ -88,6 +88,16 @@
     {% elif not annotations and post and post.meta('annotations') %}
         {{ notes.code() }}
     {% endif %}
+    {% if post and post.meta("paginate") %}
+        <script>
+            $(function() {
+                $('.section').pagination({
+                    itemsOnPage: 3,
+                    cssStyle: 'light-theme'
+                });
+            });
+            </script>
+    {% endif %}
 {{ body_end }}
 {{ template_hooks['body_end']() }}
 </body>

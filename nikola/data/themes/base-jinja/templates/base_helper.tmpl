@@ -68,6 +68,8 @@ lang="{{ lang }}">
 
 {% macro late_load_js() %}
     {{ social_buttons_code }}
+    {% import 'simple_pagination.tmpl' as pagination with context %}
+    {{ pagination.pagination() }}
 {% endmacro %}
 
 {% macro html_stylesheets() %}
@@ -81,6 +83,7 @@ lang="{{ lang }}">
         <link href="/assets/css/rst.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/code.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/theme.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/simplePagination.css" rel="stylesheet" type="text/css">
         {% if has_custom_css %}
             <link href="/assets/css/custom.css" rel="stylesheet" type="text/css">
         {% endif %}

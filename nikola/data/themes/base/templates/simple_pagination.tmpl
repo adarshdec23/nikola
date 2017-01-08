@@ -1,0 +1,14 @@
+## -*- coding: utf-8 -*-
+<%def name="pagination()">
+    % if post and post.meta("paginate"):
+        <script src="/assets/js/simplePagination.js"></script>
+        <script>
+        $(function() {
+            $('.section').pagination({
+                itemsOnPage: 3,
+                cssStyle: 'light-theme'
+            });
+        });
+        </script>
+    % endif
+</%def>

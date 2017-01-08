@@ -90,6 +90,7 @@ lang="{{ lang }}">
             <script src="/assets/js/bootstrap.min.js"></script>
             <script src="/assets/js/moment-with-locales.min.js"></script>
             <script src="/assets/js/fancydates.js"></script>
+            <script src="/assets/js/simplePagination.js"></script>
         {% endif %}
         <script src="/assets/js/jquery.colorbox-min.js"></script>
     {% endif %}
@@ -97,8 +98,22 @@ lang="{{ lang }}">
         <script src="/assets/js/colorbox-i18n/jquery.colorbox-{{ colorbox_locales[lang] }}.js"></script>
     {% endif %}
     {{ social_buttons_code }}
+    {{ pagination() }}
 {% endmacro %}
 
+{% macro pagination() %}
+    {% if post and post.meta("paginate") %}
+        <script src="/assets/js/simplePagination.js"></script>
+        <script>
+        $(function() {
+            $('.section').pagination({
+                itemsOnPage: 3,
+                cssStyle: 'light-theme'
+            });
+        });
+        </script>
+    {% endif %}
+{% endmacro %}
 
 {% macro html_stylesheets() %}
     {% if use_bundles %}
@@ -118,6 +133,7 @@ lang="{{ lang }}">
         <link href="/assets/css/code.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/colorbox.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/theme.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/simplePagination.css" rel="stylesheet" type="text/css">
         {% if has_custom_css %}
             <link href="/assets/css/custom.css" rel="stylesheet" type="text/css">
         {% endif %}
